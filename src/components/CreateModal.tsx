@@ -34,6 +34,10 @@ const CreateModal = () => {
     const description = descriptionInput.current?.value || "";
     const priority = prioritySelect.current?.value || "low";
 
+    if (title.length === 0) return alert("Please provide title");
+    if (title.length < 3)
+      return alert("Title should be greater or equal to 3 characters.");
+
     const task: Task = {
       id: Date.now(),
       taskName: title,
@@ -64,7 +68,11 @@ const CreateModal = () => {
         isCentered
       >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent
+          style={{
+            transition: "all .20s ease-out",
+          }}
+        >
           <ModalHeader>Create Task</ModalHeader>
           <ModalCloseButton />
           <ModalBody>

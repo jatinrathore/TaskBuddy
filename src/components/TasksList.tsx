@@ -8,11 +8,18 @@ import CompletedTaskItem from "./CompletedTaskItem";
 const TasksList = () => {
   const { tasks } = useTasks();
 
+  const pendingTasks = tasks.filter((task) => task.isCompleted === false);
+  const completedTasks = tasks.filter((task) => task.isCompleted === true);
+
   return (
     <div>
       <CreateModal />
       <div className="tasks--container">
-        <Text className="tasks--container__heading">Tasks</Text>
+        {pendingTasks.length > 0 ? (
+          <Text className="tasks--container__heading">Tasks</Text>
+        ) : (
+          ""
+        )}
         {tasks
           .filter((task) => task.isCompleted === false)
           .map((task, index) => (
@@ -24,9 +31,13 @@ const TasksList = () => {
               priorityLevel={task.priorityLevel}
             ></TaskItem>
           ))}
-        <Text className="tasks--container__heading" mt="20px">
-          Completed Tasks
-        </Text>
+        {completedTasks.length > 0 ? (
+          <Text className="tasks--container__heading" mt="20px">
+            Completed Tasks
+          </Text>
+        ) : (
+          ""
+        )}
         {tasks
           .filter((task) => task.isCompleted === true)
           .map((task, index) => (

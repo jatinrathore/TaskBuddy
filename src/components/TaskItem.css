@@ -21,6 +21,7 @@
 }
 
 .task--controller {
+  display: flex;
+  flex-direction: row-reverse;
   flex: 1;
-  text-align: end;
 }

@@ -25,14 +25,13 @@ const TaskItem = ({ id, title, description, priorityLevel }: Props) => {
         <Checkbox
           colorScheme={getColorScheme(priorityLevel)}
           borderColor={getColorScheme(priorityLevel)}
+          isChecked={false}
           onChange={() => completeTask(id)}
         />
         <Text className="task--details__title">{title}</Text>
         <Box className="task--controller">
-          <Box>
-            <Box as="button">
-              <UpdateModal id={id} />
-            </Box>
+          <Box display="flex">
+            <UpdateModal id={id} />
             <IconButton
               onClick={() => deleteTask(id)}
               color="red"

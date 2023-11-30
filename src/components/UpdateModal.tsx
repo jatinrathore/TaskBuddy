@@ -31,7 +31,13 @@ const UpdateModal = ({ id }: { id: number }) => {
     const taskToUpdate = tasks.find((task) => task.id === id);
 
     if (taskToUpdate) {
+      const input = nameInput.current?.value;
+
+      if (input && input?.length < 3)
+        return alert("Title should be greater or equal to 3 characters.");
+
       const title = nameInput.current?.value || taskToUpdate?.taskName;
+
       const description =
         descriptionInput.current?.value || taskToUpdate?.taskDescription;
       const priority =
