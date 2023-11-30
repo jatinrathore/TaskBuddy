@@ -16,7 +16,6 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import Task, { PriorityLevel } from "../Task";
 import { useTasks } from "../hooks/useTasks";
 import { PiNotePencilLight } from "react-icons/pi";
 
@@ -24,32 +23,26 @@ const UpdateModal = ({ id }: { id: number }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { tasks, updateTask } = useTasks();
 
-  const taskToUpdate = tasks.find((task) => task.id === id);
-
   const nameInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
   const prioritySelect = useRef<HTMLSelectElement>(null);
 
   const handleClick = () => {
-    const title = nameInput.current?.value || "";
-    const description = descriptionInput.current?.value || "";
-    const priority = prioritySelect.current?.value || "";
+    const taskToUpdate = tasks.find((task) => task.id === id);
 
-    const getPriorityLevel = (priority: string) => {
-      if (priority === "high") return PriorityLevel.High;
-      else if (priority === "medium") return PriorityLevel.Medium;
-      else return PriorityLevel.Low;
-    };
+    if (taskToUpdate) {
+      const title = nameInput.current?.value || taskToUpdate?.taskName;
+      const description =
+        descriptionInput.current?.value || taskToUpdate?.taskDescription;
+      const priority =
+        prioritySelect.current?.value || taskToUpdate?.priorityLevel;
 
-    const task: Task = {
-      id: Date.now(),
-      taskName: title,
-      taskDescription: description,
-      priorityLevel: getPriorityLevel(priority),
-      isCompleted: false,
-    };
+      taskToUpdate.taskName = title;
+      taskToUpdate.taskDescription = description;
+      taskToUpdate.priorityLevel = priority;
+      updateTask(id, taskToUpdate);
+    }
 
-    updateTask(id, task);
     onClose();
   };
 

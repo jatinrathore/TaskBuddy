@@ -2,8 +2,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import EmptyTasksList from "./components/EmptyTasksList";
 import { useTasks } from "./hooks/useTasks";
-import TaskItem from "./components/TaskItem";
-import { PriorityLevel } from "./Task";
+
 import TasksList from "./components/TasksList";
 
 const TodoApp = () => {

@@ -1,6 +1,5 @@
 import { Checkbox, Text, Box, IconButton } from "@chakra-ui/react";
 import "./TaskItem.css";
-import { PriorityLevel } from "../Task";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useTasks } from "../hooks/useTasks";
 import UpdateModal from "./UpdateModal";
@@ -9,7 +8,7 @@ interface Props {
   id: number;
   title: string;
   description: string;
-  priorityLevel: PriorityLevel;
+  priorityLevel: string;
 }
 const TaskItem = ({ id, title, description, priorityLevel }: Props) => {
   const { deleteTask, completeTask } = useTasks();

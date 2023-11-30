@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { FaPlus } from "react-icons/fa";
-import Task, { PriorityLevel } from "../Task";
+import Task from "../Task";
 import { useTasks } from "../hooks/useTasks";
 
 const CreateModal = () => {
@@ -32,19 +32,13 @@ const CreateModal = () => {
   const handleClick = () => {
     const title = nameInput.current?.value || "";
     const description = descriptionInput.current?.value || "";
-    const priority = prioritySelect.current?.value || "";
-
-    const getPriorityLevel = (priority: string) => {
-      if (priority === "high") return PriorityLevel.High;
-      else if (priority === "medium") return PriorityLevel.Medium;
-      else return PriorityLevel.Low;
-    };
+    const priority = prioritySelect.current?.value || "low";
 
     const task: Task = {
       id: Date.now(),
       taskName: title,
       taskDescription: description,
-      priorityLevel: getPriorityLevel(priority),
+      priorityLevel: priority,
       isCompleted: false,
     };
 
