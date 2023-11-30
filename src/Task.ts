@@ -1,5 +1,13 @@
+export enum PriorityLevel {
+  Low = "low",
+  Medium = "medium",
+  High = "high",
+}
+
 export default interface Task {
   id: number;
-  text: string;
-  isCompleted: boolean;
+  taskName: string;
+  taskDescription?: string;
+  isCompleted?: boolean;
+  priorityLevel?: PriorityLevel;
 }
