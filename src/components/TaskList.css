@@ -1,0 +1,11 @@
+.tasks--container {
+  margin: 30px 10%;
+}
+
+.tasks--container__heading {
+  font-size: 25px;
+  font-weight: 500;
+  width: 50%;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}

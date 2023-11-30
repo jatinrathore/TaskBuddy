@@ -9,5 +9,5 @@ export default interface Task {
   taskName: string;
   taskDescription?: string;
   isCompleted?: boolean;
-  priorityLevel?: PriorityLevel;
+  priorityLevel: PriorityLevel;
 }

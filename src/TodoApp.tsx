@@ -1,8 +1,10 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import CreateModal from "./components/CreateModal";
 import EmptyTasksList from "./components/EmptyTasksList";
 import { useTasks } from "./hooks/useTasks";
+import TaskItem from "./components/TaskItem";
+import { PriorityLevel } from "./Task";
+import TasksList from "./components/TasksList";
 
 const TodoApp = () => {
   const { tasks } = useTasks();
@@ -15,7 +17,7 @@ const TodoApp = () => {
         <NavBar />
       </GridItem>
       <GridItem area="main" padding="20px">
-        {tasks.length === 0 ? <EmptyTasksList /> : <CreateModal />}
+        {tasks.length === 0 ? <EmptyTasksList /> : <TasksList />}
       </GridItem>
     </Grid>
   );

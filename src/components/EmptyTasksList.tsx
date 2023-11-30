@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import CreateModal from "./CreateModal";
 
 const EmptyTasksList = () => {

@@ -13,10 +13,11 @@ interface TasksContextType {
   tasks: Task[];
   setTasks: Dispatch<SetStateAction<Task[]>>;
   createTask: (task: Task) => void;
-  updateTaskName: (id: number, newName: string) => void;
-  updateDescription: (id: number, newName: string) => void;
-  updatePriority: (id: number, priority: PriorityLevel) => void;
-  updateIsComplete: (id: number) => void;
+  updateTask: (id: number, newTask: Task) => void;
+  // updateTaskName: (id: number, newName: string) => void;
+  // updateDescription: (id: number, newName: string) => void;
+  // updatePriority: (id: number, priority: PriorityLevel) => void;
+  completeTask: (id: number) => void;
   deleteTask: (id: number) => void;
 }
 
@@ -36,16 +37,19 @@ const defaultTasksContext: TasksContextType = {
   createTask: () => {
     console.log("task created");
   },
-  updateTaskName: () => {
-    console.log("Name changed");
+  updateTask: () => {
+    console.log("task updated");
   },
-  updateDescription: () => {
-    console.log("Discription Changed");
-  },
-  updatePriority: () => {
-    console.log("PriorityUpdated");
-  },
-  updateIsComplete: () => {
+  // updateTaskName: () => {
+  //   console.log("Name changed");
+  // },
+  // updateDescription: () => {
+  //   console.log("Discription Changed");
+  // },
+  // updatePriority: () => {
+  //   console.log("PriorityUpdated");
+  // },
+  completeTask: () => {
     console.log("Task is Completed");
   },
   deleteTask: () => {
@@ -75,31 +79,39 @@ export const TaskContextWrapper = ({ children }: { children: ReactNode }) => {
     saveTasks(updatedTasks);
   };
 
-  const updateTaskName = (id: number, newName: string) => {
-    const updatedTasks = tasks.map((task: Task) =>
-      task.id === id ? { ...task, taskName: newName } : task
+  const updateTask = (id: number, newTask: Task) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, ...newTask } : task
     );
 
     saveTasks(updatedTasks);
   };
 
-  const updateDescription = (id: number, newDiscription: string) => {
-    const updatedTasks = tasks.map((task: Task) =>
-      task.id === id ? { ...task, taskDescription: newDiscription } : task
-    );
+  // const updateTaskName = (id: number, newName: string) => {
+  //   const updatedTasks = tasks.map((task: Task) =>
+  //     task.id === id ? { ...task, taskName: newName } : task
+  //   );
 
-    saveTasks(updatedTasks);
-  };
+  //   saveTasks(updatedTasks);
+  // };
 
-  const updatePriority = (id: number, newPriority: PriorityLevel) => {
-    const updatedTasks = tasks.map((task: Task) =>
-      task.id === id ? { ...task, priorityLevel: newPriority } : task
-    );
+  // const updateDescription = (id: number, newDiscription: string) => {
+  //   const updatedTasks = tasks.map((task: Task) =>
+  //     task.id === id ? { ...task, taskDescription: newDiscription } : task
+  //   );
 
-    saveTasks(updatedTasks);
-  };
+  //   saveTasks(updatedTasks);
+  // };
 
-  const updateIsComplete = (id: number) => {
+  // const updatePriority = (id: number, newPriority: PriorityLevel) => {
+  //   const updatedTasks = tasks.map((task: Task) =>
+  //     task.id === id ? { ...task, priorityLevel: newPriority } : task
+  //   );
+
+  //   saveTasks(updatedTasks);
+  // };
+
+  const completeTask = (id: number) => {
     const updatedTasks = tasks.map((task: Task) =>
       task.id === id ? { ...task, isCompleted: true } : task
     );
@@ -119,10 +131,8 @@ export const TaskContextWrapper = ({ children }: { children: ReactNode }) => {
         tasks,
         setTasks,
         createTask,
-        updateTaskName,
-        updateDescription,
-        updatePriority,
-        updateIsComplete,
+        updateTask,
+        completeTask,
         deleteTask,
       }}
     >

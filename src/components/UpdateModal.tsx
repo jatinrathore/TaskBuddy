@@ -1,29 +1,30 @@
 import {
-  Box,
-  Button,
-  HStack,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Select,
-  Stack,
-  Text,
-  Textarea,
   useDisclosure,
+  HStack,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Stack,
+  Input,
+  Textarea,
+  Select,
+  ModalFooter,
+  IconButton,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { FaPlus } from "react-icons/fa";
 import Task, { PriorityLevel } from "../Task";
 import { useTasks } from "../hooks/useTasks";
+import { PiNotePencilLight } from "react-icons/pi";
 
-const CreateModal = () => {
+const UpdateModal = ({ id }: { id: number }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { tasks, createTask } = useTasks();
+  const { tasks, updateTask } = useTasks();
+
+  const taskToUpdate = tasks.find((task) => task.id === id);
 
   const nameInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
@@ -48,20 +49,18 @@ const CreateModal = () => {
       isCompleted: false,
     };
 
-    createTask(task);
+    updateTask(id, task);
     onClose();
   };
 
   return (
     <HStack spacing={4}>
-      <Button colorScheme="red" onClick={onOpen}>
-        <Box display="flex" alignItems="center">
-          <Text mr="5px">
-            {tasks.length === 0 ? "Create New Task" : "Create Task"}
-          </Text>
-          <FaPlus size="12px" />
-        </Box>
-      </Button>
+      <IconButton
+        background="none"
+        aria-label="Edit"
+        icon={<PiNotePencilLight />}
+        onClick={onOpen}
+      />
 
       <Modal
         isOpen={isOpen}
@@ -71,7 +70,7 @@ const CreateModal = () => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create Task</ModalHeader>
+          <ModalHeader>Update Task</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack spacing={8}>
@@ -102,7 +101,7 @@ const CreateModal = () => {
               Close
             </Button>
             <Button colorScheme="cyan" onClick={() => handleClick()}>
-              Create
+              Update
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -111,4 +110,4 @@ const CreateModal = () => {
   );
 };
 
-export default CreateModal;
+export default UpdateModal;

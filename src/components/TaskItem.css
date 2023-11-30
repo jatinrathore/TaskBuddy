@@ -1,0 +1,26 @@
+.task--container {
+  border-bottom: 1px solid lightgrey;
+}
+
+.task--details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.task--container:hover {
+  transform: scale(1.01);
+  transition: transform 0.15s ease-in;
+}
+
+.task--details__title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.task--controller {
+  flex: 1;
+  text-align: end;
+}
