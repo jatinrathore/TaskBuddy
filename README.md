@@ -18,9 +18,9 @@ Currently, two official plugins are available:
 
 1. Users can add new Task by clicking on create button with the following information.
 
-- Title
-- Description
-- Priority(Low, Medium, Hard)
+   - Title
+   - Description
+   - Priority(Low, Medium, Hard)
 
 2. Users can update Task by clicking on second icon from right side of page.
 
@@ -30,14 +30,13 @@ Currently, two official plugins are available:
 
 5. Bonus Feature
 
-- Sorting based on Task's Priority.
+   - Sorting based on Task's Priority.
 
 6. Extra Feature
 
-- Different colors of Checkboxes based on Task's Priority.
-
-* Yellow color for low priority tasks.
-* Green color for medium priority tasks.
-* Red color for high priority tasks.
+   - Different colors of Checkboxes based on Task's Priority.
+     - Yellow color for low priority tasks.
+     - Green color for medium priority tasks.
+     - Red color for high priority tasks.
 
 7. State Management is done by Context.
