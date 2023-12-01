@@ -20,6 +20,8 @@ import { useRef } from "react";
 import { FaPlus } from "react-icons/fa";
 import Task from "../Task";
 import { useTasks } from "../hooks/useTasks";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,9 +36,19 @@ const CreateModal = () => {
     const description = descriptionInput.current?.value || "";
     const priority = prioritySelect.current?.value || "low";
 
-    if (title.length === 0) return alert("Please provide title");
+    //prevent duplicates
+    const customID = "custom-id-yes";
+
+    if (title.length === 0)
+      return toast.warn("Title field can't be empty", {
+        position: "top-center",
+        toastId: customID,
+      });
     if (title.length < 3)
-      return alert("Title should be greater or equal to 3 characters.");
+      return toast.warn("Title should be greater or equal to 3 characters.", {
+        position: "top-center",
+        toastId: customID,
+      });
 
     const task: Task = {
       id: Date.now(),

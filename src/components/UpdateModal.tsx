@@ -18,6 +18,8 @@ import {
 import { useRef } from "react";
 import { useTasks } from "../hooks/useTasks";
 import { PiNotePencilLight } from "react-icons/pi";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateModal = ({ id }: { id: number }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,8 +35,13 @@ const UpdateModal = ({ id }: { id: number }) => {
     if (taskToUpdate) {
       const input = nameInput.current?.value;
 
+      //prevent duplicates
+      const customID = "custom-id-yes";
       if (input && input?.length < 3)
-        return alert("Title should be greater or equal to 3 characters.");
+        return toast.warn("Title should be greater or equal to 3 characters.", {
+          position: "top-center",
+          toastId: customID,
+        });
 
       const title = nameInput.current?.value || taskToUpdate?.taskName;
 
@@ -57,6 +64,7 @@ const UpdateModal = ({ id }: { id: number }) => {
       <IconButton
         background="none"
         aria-label="Edit"
+        title="Update Task"
         icon={<PiNotePencilLight />}
         onClick={onOpen}
       />

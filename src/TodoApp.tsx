@@ -4,6 +4,7 @@ import EmptyTasksList from "./components/EmptyTasksList";
 import { useTasks } from "./hooks/useTasks";
 
 import TasksList from "./components/TasksList";
+import GitFooter from "./components/GitFooter";
 
 const TodoApp = () => {
   const { tasks } = useTasks();
@@ -17,6 +18,7 @@ const TodoApp = () => {
       </GridItem>
       <GridItem area="main" padding="20px">
         {tasks.length === 0 ? <EmptyTasksList /> : <TasksList />}
+        <GitFooter />
       </GridItem>
     </Grid>
   );

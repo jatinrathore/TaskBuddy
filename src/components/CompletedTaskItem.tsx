@@ -17,6 +17,7 @@ const CompletedTaskItem = ({ id, title, description }: Props) => {
         <Text
           className="task--details__title"
           style={{ textDecoration: "line-through" }}
+          color="#5a5959"
         >
           {title}
         </Text>
@@ -27,6 +28,7 @@ const CompletedTaskItem = ({ id, title, description }: Props) => {
               color="red"
               background="none"
               aria-label="Delete"
+              title="Delete Task"
               ml="5px"
               icon={<RiDeleteBin6Line />}
             />
@@ -38,6 +40,7 @@ const CompletedTaskItem = ({ id, title, description }: Props) => {
         ml="20px"
         mb="10px"
         style={{ textDecoration: "line-through" }}
+        color="#a7a5a6"
       >
         {description}
       </Text>

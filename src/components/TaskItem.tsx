@@ -28,7 +28,9 @@ const TaskItem = ({ id, title, description, priorityLevel }: Props) => {
           isChecked={false}
           onChange={() => completeTask(id)}
         />
-        <Text className="task--details__title">{title}</Text>
+        <Text className="task--details__title" color="#5a5959">
+          {title}
+        </Text>
         <Box className="task--controller">
           <Box display="flex">
             <UpdateModal id={id} />
@@ -37,13 +39,14 @@ const TaskItem = ({ id, title, description, priorityLevel }: Props) => {
               color="red"
               background="none"
               aria-label="Delete"
+              title="Delete Task"
               ml="5px"
               icon={<RiDeleteBin6Line />}
             />
           </Box>
         </Box>
       </Box>
-      <Text fontSize="13px" ml="40px" mb="10px">
+      <Text fontSize="13px" ml="40px" mb="10px" color="#a7a5a6">
         {description}
       </Text>
     </Box>

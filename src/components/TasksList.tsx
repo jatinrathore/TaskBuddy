@@ -26,7 +26,9 @@ const TasksList = () => {
       <CreateModal />
       <div className="tasks--container">
         {pendingTasks.length > 0 ? (
-          <Text className="tasks--container__heading">Tasks</Text>
+          <Text className="tasks--container__heading" color="#404040">
+            Tasks
+          </Text>
         ) : (
           ""
         )}
@@ -42,7 +44,7 @@ const TasksList = () => {
             ></TaskItem>
           ))}
         {completedTasks.length > 0 ? (
-          <Text className="tasks--container__heading" mt="20px">
+          <Text className="tasks--container__heading" mt="20px" color="#404040">
             Completed Tasks
           </Text>
         ) : (
