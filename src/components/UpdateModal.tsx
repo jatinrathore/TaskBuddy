@@ -91,7 +91,7 @@ const UpdateModal = ({ id }: { id: number }) => {
         isCentered
       >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent width={{ base: "90dvw" }}>
           <ModalHeader>Update Task</ModalHeader>
           <ModalCloseButton />
           <ModalBody>

@@ -1,5 +1,8 @@
 .tasks--container {
   margin: 30px 10%;
+  min-height: 58dvh;
+  height: auto;
+  max-height: max-content;
 }
 
 .tasks--container__heading {
@@ -8,4 +11,10 @@
   width: 50%;
   margin-bottom: 20px;
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  .tasks--container__heading {
+    font-size: 20px;
+  }
 }

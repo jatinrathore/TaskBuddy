@@ -39,12 +39,15 @@ const CreateModal = () => {
     const date = dateInput.current?.value || "";
 
     //changing date format
-    const selectedDate = new Date(date);
-    const formattedDate = selectedDate.toLocaleDateString("en-US", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
+    let formattedDate = "";
+    if (date !== "") {
+      const selectedDate = new Date(date);
+      formattedDate = selectedDate.toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      });
+    }
 
     //prevent duplicates alerts
     const customID = "custom-id-yes";
@@ -96,6 +99,7 @@ const CreateModal = () => {
           style={{
             transition: "all .20s ease-out",
           }}
+          width={{ base: "90dvw" }}
         >
           <ModalHeader>Create Task</ModalHeader>
           <ModalCloseButton />

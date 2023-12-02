@@ -1,4 +1,4 @@
-import { Checkbox, Text, Box, IconButton } from "@chakra-ui/react";
+import { Checkbox, Text, Box, IconButton, VStack } from "@chakra-ui/react";
 import "./TaskItem.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useTasks } from "../hooks/useTasks";
@@ -29,18 +29,35 @@ const TaskItem = ({
   return (
     <Box className="task--container" mt="10px">
       <Box className="task--details">
-        <Checkbox
-          colorScheme={getColorScheme(priorityLevel)}
-          borderColor={getColorScheme(priorityLevel)}
-          isChecked={false}
-          onChange={() => completeTask(id)}
-        />
-        <Text className="task--details__title" color="#5a5959">
-          {title}
-        </Text>
+        <VStack display="flex" alignItems="flex-start" width="60dvw">
+          <Box display="flex">
+            <Checkbox
+              colorScheme={getColorScheme(priorityLevel)}
+              borderColor={getColorScheme(priorityLevel)}
+              isChecked={false}
+              onChange={() => completeTask(id)}
+            />
+            <Text
+              className="task--details__title"
+              color="#5a5959"
+              fontSize={{ base: "16px", md: "20px" }}
+            >
+              {title}
+            </Text>
+          </Box>
+          <Text
+            fontSize="13px"
+            ml="40px"
+            mb="10px"
+            color="#a7a5a6"
+            wordBreak="break-word"
+          >
+            {description}
+          </Text>
+        </VStack>
         <Box className="task--controller">
           <Box display="flex" alignItems="center">
-            <Text mr="50px" title="due-date" fontSize="12px" color="#fc839f">
+            <Text mr="2rem" title="due-date" fontSize="12px" color="#fc839f">
               {dueDate}
             </Text>
             <UpdateModal id={id} />
@@ -56,9 +73,6 @@ const TaskItem = ({
           </Box>
         </Box>
       </Box>
-      <Text fontSize="13px" ml="40px" mb="10px" color="#a7a5a6">
-        {description}
-      </Text>
     </Box>
   );
 };

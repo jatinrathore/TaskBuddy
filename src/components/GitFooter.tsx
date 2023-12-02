@@ -12,7 +12,7 @@ const GitFooter = () => {
     >
       <Box display="flex" alignItems="center" color="#8c8c8c">
         <FaRegCopyright size="12px" style={{ marginTop: "2px" }} />
-        <Text fontSize="15px" ml="5px">
+        <Text fontSize={{ base: "13px", md: "15px" }} ml="5px">
           2023 TaskBuddy -
           <Link
             href="https://github.com/jatinrathore"

@@ -24,7 +24,7 @@ const defaultTasks: Task = {
   taskDescription: "Default Description",
   isCompleted: false,
   priorityLevel: "low",
-  dueDate: "Default Date",
+  dueDate: "12/12/2023",
 };
 
 const defaultTasksContext: TasksContextType = {
