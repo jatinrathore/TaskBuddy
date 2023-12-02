@@ -9,8 +9,15 @@ interface Props {
   title: string;
   description: string;
   priorityLevel: string;
+  dueDate: string;
 }
-const TaskItem = ({ id, title, description, priorityLevel }: Props) => {
+const TaskItem = ({
+  id,
+  title,
+  description,
+  priorityLevel,
+  dueDate,
+}: Props) => {
   const { deleteTask, completeTask } = useTasks();
 
   const getColorScheme = (priority: string) => {
@@ -32,7 +39,10 @@ const TaskItem = ({ id, title, description, priorityLevel }: Props) => {
           {title}
         </Text>
         <Box className="task--controller">
-          <Box display="flex">
+          <Box display="flex" alignItems="center">
+            <Text mr="50px" title="due-date" fontSize="12px" color="#fc839f">
+              {dueDate}
+            </Text>
             <UpdateModal id={id} />
             <IconButton
               onClick={() => deleteTask(id)}

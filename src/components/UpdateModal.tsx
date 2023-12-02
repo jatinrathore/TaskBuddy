@@ -28,6 +28,7 @@ const UpdateModal = ({ id }: { id: number }) => {
   const nameInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
   const prioritySelect = useRef<HTMLSelectElement>(null);
+  const dateInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
     const taskToUpdate = tasks.find((task) => task.id === id);
@@ -43,13 +44,27 @@ const UpdateModal = ({ id }: { id: number }) => {
           toastId: customID,
         });
 
-      const title = nameInput.current?.value || taskToUpdate?.taskName;
+      const title = nameInput.current?.value || taskToUpdate.taskName;
 
       const description =
-        descriptionInput.current?.value || taskToUpdate?.taskDescription;
-      const priority =
-        prioritySelect.current?.value || taskToUpdate?.priorityLevel;
+        descriptionInput.current?.value || taskToUpdate.taskDescription;
 
+      const priority =
+        prioritySelect.current?.value || taskToUpdate.priorityLevel;
+
+      //checking for date value and then update it
+      const date = dateInput.current?.value || "";
+      if (date !== "") {
+        const selectedDate = new Date(date);
+
+        const formattedDate = selectedDate.toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        });
+
+        taskToUpdate.dueDate = formattedDate;
+      }
       taskToUpdate.taskName = title;
       taskToUpdate.taskDescription = description;
       taskToUpdate.priorityLevel = priority;
@@ -86,6 +101,12 @@ const UpdateModal = ({ id }: { id: number }) => {
                 placeholder="Add Description"
                 ref={descriptionInput}
               ></Textarea>
+              <Input
+                placeholder="Select Due Date and Time"
+                title="set due date"
+                type="date"
+                ref={dateInput}
+              />
               <Select
                 placeholder="Select Priority"
                 style={{ fontWeight: "500" }}

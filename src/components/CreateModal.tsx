@@ -30,15 +30,26 @@ const CreateModal = () => {
   const nameInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
   const prioritySelect = useRef<HTMLSelectElement>(null);
+  const dateInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
     const title = nameInput.current?.value || "";
     const description = descriptionInput.current?.value || "";
     const priority = prioritySelect.current?.value || "low";
+    const date = dateInput.current?.value || "";
 
-    //prevent duplicates
+    //changing date format
+    const selectedDate = new Date(date);
+    const formattedDate = selectedDate.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    //prevent duplicates alerts
     const customID = "custom-id-yes";
 
+    //validating title input
     if (title.length === 0)
       return toast.warn("Title field can't be empty", {
         position: "top-center",
@@ -56,6 +67,7 @@ const CreateModal = () => {
       taskDescription: description,
       priorityLevel: priority,
       isCompleted: false,
+      dueDate: formattedDate,
     };
 
     createTask(task);
@@ -94,6 +106,12 @@ const CreateModal = () => {
                 placeholder="Add Description"
                 ref={descriptionInput}
               ></Textarea>
+              <Input
+                placeholder="Select Due Date and Time"
+                title="set due date"
+                type="date"
+                ref={dateInput}
+              />
               <Select
                 placeholder="Select Priority"
                 style={{ fontWeight: "500" }}

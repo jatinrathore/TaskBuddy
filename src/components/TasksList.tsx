@@ -9,6 +9,7 @@ import Task from "../Task";
 const TasksList = () => {
   const { tasks } = useTasks();
 
+  //sorting tasks on the basis of priority
   const priorityOrder: Record<string, number> = { low: 0, medium: 1, high: 2 };
 
   const sortTasksByPriority = (tasks: Task[]) => {
@@ -41,6 +42,7 @@ const TasksList = () => {
               title={task.taskName}
               description={task.taskDescription || ""}
               priorityLevel={task.priorityLevel}
+              dueDate={task.dueDate}
             ></TaskItem>
           ))}
         {completedTasks.length > 0 ? (
