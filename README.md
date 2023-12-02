@@ -48,6 +48,7 @@ npm start
 - [x] Bonus Feature
 
   - Sorting based on Task's Priority.
+  - Due Date for Task is added.
 
 - [x] Extra Feature
 
