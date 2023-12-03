@@ -28,7 +28,7 @@ const CompletedTaskItem = ({ id, title, description }: Props) => {
           </Box>
           <Text
             fontSize="13px"
-            ml="40px"
+            ml="30px"
             mb="10px"
             color="#a7a5a6"
             wordBreak="break-word"

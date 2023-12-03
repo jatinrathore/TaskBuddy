@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { useTasks } from "../hooks/useTasks";
 import CreateModal from "./CreateModal";
 import TaskItem from "./TaskItem";
@@ -27,9 +27,12 @@ const TasksList = () => {
       <CreateModal />
       <div className="tasks--container">
         {pendingTasks.length > 0 ? (
-          <Text className="tasks--container__heading" color="#404040">
-            Tasks
-          </Text>
+          <Box display="flex" alignItems="center">
+            <Text className="tasks--container__heading" color="#404040">
+              Tasks
+            </Text>
+            <Text mb="20px">({pendingTasks.length})</Text>
+          </Box>
         ) : (
           ""
         )}
@@ -46,9 +49,16 @@ const TasksList = () => {
             ></TaskItem>
           ))}
         {completedTasks.length > 0 ? (
-          <Text className="tasks--container__heading" mt="20px" color="#404040">
-            Completed Tasks
-          </Text>
+          <Box display="flex" alignItems="center">
+            <Text
+              className="tasks--container__heading"
+              mt="20px"
+              color="#404040"
+            >
+              Completed Tasks
+            </Text>
+            <Text>({completedTasks.length})</Text>
+          </Box>
         ) : (
           ""
         )}
